@@ -8,3 +8,8 @@ from flask import render_template
 @app.route('/')
 def home():
     return render_template('home.html')
+
+@app.route('/test')
+def testRoute():
+    names = ['Robert', 'David', 'Bill', 'Jessey']
+    return render_template('test.html', list_names = names)
