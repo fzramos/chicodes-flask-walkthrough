@@ -8,19 +8,19 @@
             <div class="form-group">
                 <fieldset>
                     {{ user_form.username.label }}
-                    {{ user_form.username(class="form-control" placeholder = "Add Username")}}
+                    {{ user_form.username(class="form-control", placeholder = "Add Username")}}
                 </fieldset>
                 <fieldset>
                     {{ user_form.email.label }}
-                    {{ user_form.email(class="form-control" plaholder = "Add password")}}
+                    {{ user_form.email(class="form-control", plaholder = "Add password")}}
                 </fieldset>
                 <fieldset>
                     {{ user_form.password.label }}
-                    {{ user_form.password(class="form-control" plaholder = "Add password")}}
+                    {{ user_form.password(class="form-control", plaholder = "Add password")}}
                 </fieldset>
                 <fieldset>
-                    {{ user_form.confirm_password.label}}
-                    {{ user_form.confirm_pass(class="form-control") placeholder = "Retype password"}}
+                    {{ user_form.confirm_pass.label}}
+                    {{ user_form.confirm_pass(class="form-control", placeholder = "Retype password") }}
                 </fieldset>
                 {{ user_form.submit(class="btn btn-success")}}
             </div>

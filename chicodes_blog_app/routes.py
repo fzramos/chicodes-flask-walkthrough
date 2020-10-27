@@ -20,7 +20,7 @@ def testRoute():
 # GET  == Gathering Info
 # POST == Sending info
 # Create part of CRUD, critical
-@app.route('/register', methods = [])
+@app.route('/register', methods = ['GET', 'POST'])
 def register():
     # Init our form
     form = UserInfoForm()
