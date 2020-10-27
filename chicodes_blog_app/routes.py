@@ -4,6 +4,9 @@ from chicodes_blog_app import app
 # Import  specific packages from flask
 from flask import render_template
 
+# Import user created form class
+from forms import UserInfoForm
+
 # Default Home route
 @app.route('/')
 def home():
@@ -13,3 +16,13 @@ def home():
 def testRoute():
     names = ['Robert', 'David', 'Bill', 'Jessey']
     return render_template('test.html', list_names = names)
+
+# GET  == Gathering Info
+# POST == Sending info
+# Create part of CRUD, critical
+@app.route('/register', methods = [])
+def register():
+    # Init our form
+    form = UserInfoForm()
+    return render_template('register.html', user_form = form)
+    # user_form is just variable name, nothing special, not keywork

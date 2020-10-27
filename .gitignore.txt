@@ -1,3 +1,0 @@
-.vscode/*
-
-chicodes_blog_app/__pycache__/*
