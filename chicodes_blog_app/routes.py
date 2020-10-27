@@ -5,7 +5,7 @@ from chicodes_blog_app import app
 from flask import render_template
 
 # Import user created form class
-from forms import UserInfoForm
+from chicodes_blog_app.forms import UserInfoForm
 
 # Default Home route
 @app.route('/')
