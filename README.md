@@ -5,6 +5,12 @@
 -   chicodes_blog_app/
     - templates/
         - home.html
+        - nav.html
+        - test.html
+        - base.html
+    - static
+        - css
+            - `main.css`
     - `__init__.py`
     - `routes.py`
 
@@ -12,6 +18,8 @@
 - `config.py`
 
 ## Files changed so far:
-- home.html
 - routes.py
 - __init__.py
+- nav.html
+- test.html
+- base.html
