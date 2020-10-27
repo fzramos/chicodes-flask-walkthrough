@@ -1,2 +1,4 @@
+.env 
+# key!! The .env will have a lot of sensitive data for app so don't upload it!
 .vscode/*
 **/__pycache__/**
