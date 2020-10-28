@@ -1,11 +1,15 @@
 # Import the app variable from the init
-from chicodes_blog_app import app
+from chicodes_blog_app import app, db
 
 # Import  specific packages from flask
 from flask import render_template, request
 
 # Import user created form class
 from chicodes_blog_app.forms import UserInfoForm
+
+# Import of Our model(s) for the Database
+from chicodes_blog_app.models import User, Post
+
 
 # Default Home route
 @app.route('/')
@@ -34,6 +38,16 @@ def register():
         password = form.password.data
         # print the data to the server that comes from the form
         print(username, email, password)
+
+        # Creation/Init of our User Class (aka Model)
+        user = User(username, email, password)
+
+        # Open a connection to the database
+        db.session.add(user) 
+        # similar to file open, need to close it 
+
+        # commit all data to the database
+        db.session.commit()
 
     return render_template('register.html', user_form = form)
     # user_form is just variable name, nothing special, not keywork
