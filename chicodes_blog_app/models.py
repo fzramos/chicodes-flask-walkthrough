@@ -18,9 +18,12 @@ from flask_login import UserMixin
 # Which is a decorator(used in this class to send info in to the User Model)
 # Specifically the User's ID
 @login_manager.user_login
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 # now creating a SQL table class User
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(150), nullable = False, unique = True)
     email = db.Column(db.String(150), nullable = False, unique = True)
