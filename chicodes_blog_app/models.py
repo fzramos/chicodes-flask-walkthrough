@@ -17,7 +17,7 @@ from flask_login import UserMixin
 # Create the current user_manager using the user_login function
 # Which is a decorator(used in this class to send info in to the User Model)
 # Specifically the User's ID
-@login_manager.user_login
+@login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
