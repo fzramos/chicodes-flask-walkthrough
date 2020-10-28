@@ -5,11 +5,14 @@ from chicodes_blog_app import app, db
 from flask import render_template, request
 
 # Import user created form class
-from chicodes_blog_app.forms import UserInfoForm
+from chicodes_blog_app.forms import UserInfoForm, LoginForm
 
 # Import of Our model(s) for the Database
-from chicodes_blog_app.models import User, Post
-
+from chicodes_blog_app.models import User, Post, check_password_hash
+# TODO add comments from Joel
+# 
+# 
+from flask_login import login_required, login_user, current_user, logout_user
 
 # Default Home route
 @app.route('/')
@@ -52,4 +55,26 @@ def register():
     return render_template('register.html', user_form = form)
     # user_form is just variable name, nothing special, not keywork
 
-    
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'POST' and form.validate:
+        email = form.email.data
+        password = form.password.data
+        # Saving the logged in user to a variable
+        logged_in = User.query.filter(User.email == email).first()
+        # This is basically a sql SELECT STATEMENT
+        # SELECT * FROM user WHERE User.email == email LIMIT 1
+
+        # check the password of the newly found user
+        # and validate the password against the hash value 
+        # inside fo the database
+        if logged_user and check_password_has(logged_user.password, password):
+            login_user(logged_user)
+            # TODO redirect user 
+        else:
+            # TODO redirect user to login route
+            return 'Not Logged in'
+    return render_template('login.html', login_form = form)
+        

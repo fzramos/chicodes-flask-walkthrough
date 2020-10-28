@@ -1,4 +1,4 @@
-from chicodes_blog_app import app, db
+from chicodes_blog_app import app, db, login_manager
 
 # Import all of the Werkzeug Security methods
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,9 +7,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # Import for DateTime module (This comes from python)
 from datetime import datetime
 
+# Import for the Login Manager UserMixin (basically parent class)
+from flask_login import UserMixin
+
 # The User class will have
 # An id, username, email
 # password, post
+
+# Create the current user_manager using the user_login function
+# Which is a decorator(used in this class to send info in to the User Model)
+# Specifically the User's ID
+@login_manager.user_login
 
 # now creating a SQL table class User
 class User(db.Model):
