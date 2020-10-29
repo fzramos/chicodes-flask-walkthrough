@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{ url_for('home') }}">
+        <button class="btn btn-primary">Back to home</button>
+
+    </a>
+
+    <div class="container">
+        <!-- need to link back to Users via post id and Post table -->
+        <!-- from post backref relationship we added to the Post modle -->
+        <!-- we called that backref 'author' which we can use here -->
+        <!-- This is how we do JOINs in Flask -->
+        <h1>This post belongs to: {{ post.author.username }} </h1>
+        <hr>
+        <h3>Post Info: </h3>
+        <hr>
+        <h3>Title: {{ post.title }}</h3>
+        <p>Content: {{ post.content}} </p>
+
+        <blockquote>Date Created: {{ post.date_created }}</blockquote>
+
+        <a href="{{ url_for('post_update', post_id = post.id) }}"><button class="btn btn-primary">Update this Blog Post</button></a>
+
+        <!-- TODO Add Delete button URL -->
+        <a href="{{ url_for('post_delete', post_id = post.id) }}"><button class="btn btn-danger">Delete this Blog Post</button></a>
+    </div>
+
+{% endblock content %}
