@@ -9,9 +9,9 @@ from chicodes_blog_app.forms import UserInfoForm, LoginForm, PostForm
 
 # Import of Our model(s) for the Database
 from chicodes_blog_app.models import User, Post, check_password_hash
-# TODO add comments from Joel
-# 
-# 
+
+#Import for Flask Login functions - login_required
+# login_user, current_user, logout_user
 from flask_login import login_required, login_user, current_user, logout_user
 
 # Default Home route
@@ -108,12 +108,14 @@ def posts():
 
 # post detail route to dsiplay info about a post
 @app.route('/posts/<int:post_id>')
+@login_required
 def post_detail(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post_detail.html', post = post)
 
 # UPDATE post
 @app.route('/posts/update/<int:post_id>', methods=["GET", "POST"])
+@login_required
 def post_update(post_id):
     post = Post.query.get_or_404(post_id)
     form = PostForm()
@@ -134,6 +136,7 @@ def post_update(post_id):
 
 # DELETE post
 @app.route('/posts/delete/<int:post_id>', methods = ['GET', 'POST', 'DELETE'])
+@login_required
 def post_delete(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
